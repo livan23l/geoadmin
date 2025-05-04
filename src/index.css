@@ -1,0 +1,15 @@
+.punto {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #333;
+}
+.verde {
+  background-color: green;
+}
+.amarillo {
+  background-color: yellow;
+}
+.rojo {
+  background-color: red;
+}
