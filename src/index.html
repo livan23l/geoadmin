@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación de Riesgos del Jardín</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 220px;
+        }
+        .button {
+            padding: 15px;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            text-align: center;
+        }
+        .primary { background-color: #0288D1; }
+        .secondary { background-color: #81D4FA; }
+        
+        .garden-map {
+            background-color: #e0e0e0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-left: 20px;
+            flex-grow: 1;
+            position: relative;
+            height: 400px;
+        }
+        
+        .garden-shape {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+            background-color: #f5f5f5;
+            clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            width: 80%;
+            height: 80%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .grid-cell {
+            border: 1px solid #ccc;
+            position: relative;
+        }
+        
+        .risk-point {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+        
+        .risk-low { background-color: #4CAF50; }
+        .risk-medium { background-color: #FF9800; }
+        .risk-high { background-color: #F44336; }
+        
+        .main-content {
+            display: flex;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            .button-container {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            .garden-map {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 style="font-family: Arial, sans-serif; font-size: 32px; color: #0288D1; margin: 20px 0;">GeoAdmin</h1>        </div>
+        
+        <div class="main-content">
+            <div class="button-container">
+                <a class="button primary" href="riesgos.html">Ver riesgos</a>
+                <a class="button secondary" href="basura.html">Ver basura</a>
+                <a class="button secondary" href="limpieza.html">Ver limpieza</a>
+            </div>
+            
+            <div class="garden-map">
+                <div class="garden-shape">
+                    <img src="./assets/mapa.png" alt="Mapa del jardín" style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;">
+
+                    
+                    <!-- Risk points -->
+                    <span class="risk-point risk-high" style="top: 50%; left: 55%;"></span>
+                    <span class="risk-point risk-high" style="top: 60%; left: 75%;"></span>
+                    <span class="risk-point risk-medium" style="top: 45%; left: 60%;"></span>
+                    <span class="risk-point risk-medium" style="top: 32%; left: 45%;"></span>
+                    <span class="risk-point risk-medium" style="top: 22%; left: 45%;"></span>
+                    <span class="risk-point risk-low" style="top: 55%; left: 25%;"></span>
+                    <span class="risk-point risk-low" style="top: 25%; left: 30%;"></span>
+                    <span class="risk-point risk-low" style="top: 70%; left: 32%;"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
