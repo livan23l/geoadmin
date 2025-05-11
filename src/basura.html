@@ -510,4 +510,262 @@
                 
                 <div class="trash-card empty">
                     <div class="trash-title">Contenedor Peligrosos</div>
-                    <div class="trash-location">Sector Oeste (B1
+                    <div class="trash-location">Sector Oeste (B1)</div>
+                    <p>Contenedor de residuos peligrosos al 20% de capacidad.</p>
+                    <div class="trash-level empty">20%</div>
+                    <div class="trash-actions">
+                        <button class="trash-action-btn">Ignorar</button>
+                        <button class="trash-action-btn primary">Revisar estado</button>
+                    </div>
+                </div>
+                
+                <div class="trash-card empty">
+                    <div class="trash-title">Contenedor Electrónicos</div>
+                    <div class="trash-location">Sector Norte (A2)</div>
+                    <p>Contenedor de residuos electrónicos al 15% de capacidad.</p>
+                    <div class="trash-level empty">15%</div>
+                    <div class="trash-actions">
+                        <button class="trash-action-btn">Ignorar</button>
+                        <button class="trash-action-btn primary">Revisar estado</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- Chat Flotante - Insertar antes del cierre del body -->
+<div class="chat-widget">
+    <!-- Botón para abrir el chat -->
+    <div class="chat-button">
+        <span class="icon-chat"></span>
+    </div>
+    
+    <!-- Contenedor del chat -->
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <h3>Asistente IA</h3>
+            <span class="chat-close icon-close"></span>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">
+                Hola, soy tu asistente virtual. ¿En qué puedo ayudarte hoy?
+            </div>
+        </div>
+        <div class="chat-typing" id="chatTyping">
+            <div class="typing-indicator">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="chat-input-container">
+            <input type="text" class="chat-input" id="chatInput" placeholder="Escribe tu mensaje aquí...">
+            <button class="send-button" id="sendButton">
+                <span class="icon-send"></span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Estilos CSS del chat -->
+<style>
+    :root {
+        --chat-primary: #0288D1;
+        --chat-secondary: #81D4FA;
+        --chat-light: #f5f5f5;
+        --chat-dark: #333;
+        --chat-user-bg: #E3F2FD;
+        --chat-bot-bg: #ECEFF1;
+        --chat-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .chat-widget {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 9999;
+        font-family: Arial, sans-serif;
+    }
+
+    .chat-button {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: var(--chat-primary);
+        box-shadow: var(--chat-shadow);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    .chat-button:hover {
+        transform: scale(1.05);
+    }
+
+    .chat-button i {
+        font-size: 24px;
+    }
+
+    .chat-container {
+        position: absolute;
+        bottom: 70px;
+        right: 0;
+        width: 350px;
+        height: 450px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: var(--chat-shadow);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        opacity: 0;
+        transform: translateY(20px) scale(0.9);
+        pointer-events: none;
+    }
+
+    .chat-container.active {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: all;
+    }
+
+    .chat-header {
+        padding: 15px;
+        background-color: var(--chat-primary);
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .chat-header h3 {
+        margin: 0;
+        font-size: 16px;
+    }
+
+    .chat-close {
+        cursor: pointer;
+        font-size: 18px;
+    }
+
+    .chat-messages {
+        flex: 1;
+        padding: 15px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .message {
+        max-width: 80%;
+        padding: 10px 12px;
+        border-radius: 12px;
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .user-message {
+        align-self: flex-end;
+        background-color: var(--chat-user-bg);
+        border-bottom-right-radius: 4px;
+    }
+
+    .bot-message {
+        align-self: flex-start;
+        background-color: var(--chat-bot-bg);
+        border-bottom-left-radius: 4px;
+    }
+
+    .chat-input-container {
+        padding: 10px;
+        border-top: 1px solid #eee;
+        display: flex;
+        align-items: center;
+    }
+
+    .chat-input {
+        flex: 1;
+        padding: 10px 15px;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        outline: none;
+        font-size: 14px;
+    }
+
+    .send-button {
+        margin-left: 10px;
+        background-color: var(--chat-primary);
+        color: white;
+        border: none;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .send-button:hover {
+        background-color: var(--chat-secondary);
+    }
+
+    .chat-typing {
+        align-self: flex-start;
+        padding: 10px;
+        font-size: 14px;
+        color: #888;
+        display: none;
+    }
+
+    .typing-indicator {
+        display: inline-block;
+    }
+
+    .typing-indicator span {
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        background-color: #888;
+        border-radius: 50%;
+        margin-right: 3px;
+        animation: typing 1s infinite;
+    }
+
+    .typing-indicator span:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .typing-indicator span:nth-child(3) {
+        animation-delay: 0.4s;
+        margin-right: 0;
+    }
+
+    @keyframes typing {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-5px); }
+    }
+
+    /* Estilos para iconos usando entidades HTML */
+    .icon-chat:before {
+        content: "💬";
+    }
+    .icon-close:before {
+        content: "✖";
+    }
+    .icon-send:before {
+        content: "➤";
+    }
+</style>
+
+<!-- Incluir el archivo de JavaScript -->
+<script src="ajax.js"></script>
+</body>
